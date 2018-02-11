@@ -27,6 +27,14 @@ Command to create maven javaee project.
 
 open project in intellij
 
-Mannully add support for jpa. Add Schemas adn DTDs to the file "persistence_2_1.xsd" in root directory
+## Note for project
+
+Use Java Persistence API (JPA) to do Object Relational Mapping
+
+Mannully add support for jpa. Add Schemas and DTDs to the file "persistence_2_1.xsd" in root directory.
 
 >http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd
+
+Use EntityManager and JPQL to implement CURD Operation to database.
+
+Java Transaction API (JTA)
