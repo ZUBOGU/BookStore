@@ -64,7 +64,7 @@ public class BookRepositoryTest {
         // Count all
         assertEquals(Long.valueOf(0), bookRepository.countAll());
         // Find all
-        assertEquals(1, bookRepository.findAll().size());
+        assertEquals(0, bookRepository.findAll().size());
     }
 
     @Test
@@ -95,7 +95,7 @@ public class BookRepositoryTest {
         // Count all
         assertEquals(Long.valueOf(1), bookRepository.countAll());
         // Find all
-        assertEquals(0, bookRepository.findAll().size());
+        assertEquals(1, bookRepository.findAll().size());
     }
 
     @Test

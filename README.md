@@ -41,10 +41,13 @@ Java Transaction API (JTA)
 
 ## Test Strategy
 
-###Unit Test
+### Unit Test
 
-###Integration Test
+### Integration Test
 JUnit and Arquillian, Testing the Book Repository
 
 ShrinkWrap, testing the CRUD operations within wildFly
+
+run test with
+>mvn test
 
