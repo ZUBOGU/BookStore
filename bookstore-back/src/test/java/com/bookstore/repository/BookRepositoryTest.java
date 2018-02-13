@@ -15,28 +15,22 @@ import org.junit.runner.RunWith;
 import javax.inject.Inject;
 import java.util.Date;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 
 @RunWith(Arquillian.class)
 public class BookRepositoryTest {
 
-    // ======================================
-    // =             Attributes             =
-    // ======================================
-
+    // Attributes
     private static Long bookId;
 
-    // ======================================
-    // =          Injection Points          =
-    // ======================================
-
+    // Injection Points
     @Inject
     private BookRepository bookRepository;
 
-    // ======================================
-    // =             Deployment             =
-    // ======================================
-
+    // Deployment
     @Deployment
     public static Archive<?> createDeploymentPackage() {
 
@@ -48,10 +42,7 @@ public class BookRepositoryTest {
             .addAsManifestResource("META-INF/test-persistence.xml", "persistence.xml");
     }
 
-    // ======================================
-    // =            Test methods            =
-    // ======================================
-
+    // Test methods
     @Test
     @InSequence(1)
     public void shouldBeDeployed() {
@@ -115,5 +106,56 @@ public class BookRepositoryTest {
         assertEquals(Long.valueOf(0), bookRepository.countAll());
         // Find all
         assertEquals(0, bookRepository.findAll().size());
+    }
+
+    @Test(expected = Exception.class)
+    @InSequence(8)
+    public void shouldFailCreatingANullBook() {
+        bookRepository.create(null);
+    }
+
+    @Test(expected = Exception.class)
+    @InSequence(9)
+    public void shouldFailCreatingABookWithNullTitle() {
+        Book book = new Book(null, "description", 12F, "isbn", new Date(),123, "imageURL", Language.ENGLISH);
+        bookRepository.create(book);
+    }
+
+
+    @Test(expected = Exception.class)
+    @InSequence(10)
+    public void shouldFailCreatingABookWithLowUnitCostTitle() {
+        Book book = new Book("title", "description", 0F, "isbn", new Date(),123, "imageURL", Language.ENGLISH);
+        bookRepository.create(book);
+    }
+
+    @Test(expected = Exception.class)
+    @InSequence(11)
+    public void shouldFailCreatingABookWithNullISBN() {
+        Book book = new Book("title", "description", 12F, null, new Date(),123, "imageURL", Language.ENGLISH);
+        bookRepository.create(book);
+    }
+
+    @Test(expected = Exception.class)
+    @InSequence(12)
+    public void shouldFailInvokingFindByIdWithNull() {
+        bookRepository.find(null);
+    }
+
+    @Test
+    @InSequence(13)
+    public void shouldNotFindUnknownId() {
+        assertNull(bookRepository.find(99999L));
+    }
+
+    @Test(expected = Exception.class)
+    @InSequence(14)
+    public void shouldFailInvokingDeleteByIdWithNull() {
+        bookRepository.delete(null);
+    }
+    @Test(expected = Exception.class)
+    @InSequence(15)
+    public void shouldNotDeleteUnknownId() {
+        bookRepository.delete(99999L);
     }
 }
