@@ -2,6 +2,9 @@ package com.bookstore.repository;
 
 import com.bookstore.model.Book;
 import com.bookstore.model.Language;
+import com.bookstore.util.IsbnGenerator;
+import com.bookstore.util.NumberGenerator;
+import com.bookstore.util.TextUtil;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.junit.InSequence;
@@ -15,9 +18,7 @@ import org.junit.runner.RunWith;
 import javax.inject.Inject;
 import java.util.Date;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 
 @RunWith(Arquillian.class)
@@ -30,6 +31,12 @@ public class BookRepositoryTest {
     @Inject
     private BookRepository bookRepository;
 
+    @Inject
+    private IsbnGenerator isbnGenerator;
+
+    @Inject
+    private TextUtil textUtil;
+
     // Deployment
     @Deployment
     public static Archive<?> createDeploymentPackage() {
@@ -38,6 +45,9 @@ public class BookRepositoryTest {
             .addClass(Book.class)
             .addClass(Language.class)
             .addClass(BookRepository.class)
+            .addClass(NumberGenerator.class)
+            .addClass(IsbnGenerator.class)
+            .addClass(TextUtil.class)
             .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml")
             .addAsManifestResource("META-INF/test-persistence.xml", "persistence.xml");
     }
@@ -46,7 +56,10 @@ public class BookRepositoryTest {
     @Test
     @InSequence(1)
     public void shouldBeDeployed() {
+        // check for each Injecting Points
         assertNotNull(bookRepository);
+        assertNotNull(isbnGenerator);
+        assertNotNull(textUtil);
     }
 
     @Test
@@ -62,7 +75,7 @@ public class BookRepositoryTest {
     @InSequence(3)
     public void shouldCreateABook() {
         // Creates a book
-        Book book = new Book("title", "description", 12F, "isbn", new Date(),123, "imageURL", Language.ENGLISH);
+        Book book = new Book("a  title", "description", 12F, "isbn", new Date(),123, "imageURL", Language.ENGLISH);
         book = bookRepository.create(book);
         // Checks the created book
         assertNotNull(book);
@@ -77,7 +90,10 @@ public class BookRepositoryTest {
         Book bookFound = bookRepository.find(bookId);
         // Checks the found book
         assertNotNull(bookFound.getId());
-        assertEquals("title", bookFound.getTitle());
+
+        // add checking for injecting beans usage and util methods
+        assertTrue(bookFound.getIsbn().startsWith("13-84356-"));
+        assertEquals("a title", bookFound.getTitle());
     }
 
     @Test
@@ -118,7 +134,7 @@ public class BookRepositoryTest {
     @InSequence(9)
     public void shouldFailCreatingABookWithNullTitle() {
         Book book = new Book(null, "description", 12F, "isbn", new Date(),123, "imageURL", Language.ENGLISH);
-        bookRepository.create(book);
+        book =  bookRepository.create(book);
     }
 
 
@@ -126,14 +142,14 @@ public class BookRepositoryTest {
     @InSequence(10)
     public void shouldFailCreatingABookWithLowUnitCostTitle() {
         Book book = new Book("title", "description", 0F, "isbn", new Date(),123, "imageURL", Language.ENGLISH);
-        bookRepository.create(book);
+        book =  bookRepository.create(book);
     }
-
-    @Test(expected = Exception.class)
+    
     @InSequence(11)
     public void shouldFailCreatingABookWithNullISBN() {
         Book book = new Book("title", "description", 12F, null, new Date(),123, "imageURL", Language.ENGLISH);
-        bookRepository.create(book);
+        book = bookRepository.create(book);
+        assertTrue(book.getIsbn().startsWith("13-84356-"));
     }
 
     @Test(expected = Exception.class)

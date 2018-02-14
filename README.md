@@ -31,13 +31,21 @@ open project in intellij
 
 Use Java Persistence API (JPA) to do Object Relational Mapping
 
-Manually add support for jpa. Add Schemas and DTDs to the file "persistence_2_1.xsd" in root directory.
+Manually add support for jpa. Add Schemas and DTDs to the files "persistence_2_1.xsd" and "beans_1_1.xsd" in root directory.
 
 >http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd
+
+>http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd
 
 Use EntityManager and JPQL to implement CURD Operation to database.
 
 Java Transaction API (JTA)
+
+Validating Data (Object Attributs and Method Parameter)
+
+Context and Denpendency Inject (CDI)
+
+Injecting bEANS
 
 ## Test Strategy
 
