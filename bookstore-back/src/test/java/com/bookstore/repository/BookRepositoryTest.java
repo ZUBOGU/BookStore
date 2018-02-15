@@ -144,7 +144,7 @@ public class BookRepositoryTest {
     }
     
     @InSequence(11)
-    public void shouldFailCreatingABookWithNullISBN() {
+    public void shouldNotFailCreatingABookWithNullISBN() {
         Book bookFound = bookRepository.create(new Book(null, "title", 12F, 123, Language.ENGLISH, new Date(), "imageURL", "description"));
         assertTrue(bookFound.getIsbn().startsWith("13-84356-"));
     }

@@ -28,26 +28,15 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.*;
 import static org.junit.Assert.*;
 
-/**
- * @author Antonio Goncalves
- *         http://www.antoniogoncalves.org
- *         --
- */
 @RunWith(Arquillian.class)
 @RunAsClient
 public class BookEndpointTest {
 
-    // ======================================
-    // =             Attributes             =
-    // ======================================
-
+    // Attributes
     private static String bookId;
     private Response response;
 
-    // ======================================
-    // =             Deployment             =
-    // ======================================
-
+    // Deployment
     @Deployment(testable = false)
     public static Archive<?> createDeploymentPackage() {
 
@@ -64,10 +53,7 @@ public class BookEndpointTest {
             .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml");
     }
 
-    // ======================================
-    // =            Test methods            =
-    // ======================================
-
+    // Test methods
     @Test
     @InSequence(2)
     public void shouldGetNoBook(@ArquillianResteasyResource("api/books") WebTarget webTarget) {

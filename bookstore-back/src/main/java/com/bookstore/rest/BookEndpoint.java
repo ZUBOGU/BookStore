@@ -51,7 +51,7 @@ public class BookEndpoint {
 
     @GET
     @Produces(APPLICATION_JSON)
-    public Response getBooks(Long id) {
+    public Response getBooks() {
         List<Book> books = bookRepository.findAll();
 
         if (books.size() == 0) {
