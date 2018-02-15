@@ -59,3 +59,6 @@ ShrinkWrap, testing the CRUD operations within wildFly
 run test with
 >mvn test
 
+### Clien Test
+JAX-RS client API, access remotely, black box testing
+

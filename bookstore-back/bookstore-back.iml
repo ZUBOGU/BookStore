@@ -129,7 +129,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-controller-client:2.0.10.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.wildfly.core:wildfly-protocol:2.0.10.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.xnio:xnio-api:3.3.4.Final" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.xnio:xnio-nio:3.3.4.Final" level="project" />git
+    <orderEntry type="library" scope="TEST" name="Maven: org.jboss.xnio:xnio-nio:3.3.4.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss:jboss-dmr:1.3.0.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.logging:jboss-logging:3.3.0.Final" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.jboss.threads:jboss-threads:2.2.1.Final" level="project" />
