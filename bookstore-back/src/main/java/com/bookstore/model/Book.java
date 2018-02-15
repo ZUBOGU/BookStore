@@ -51,15 +51,15 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String description, Float unitCost, String isbn, Date publicationDate, Integer nbOfPages, String imageURL, Language language) {
-        this.title = title;
-        this.description = description;
-        this.unitCost = unitCost;
+    public Book(String isbn, String title, Float unitCost, Integer nbOfPages, Language language, Date publicationDate, String imageURL, String description) {
         this.isbn = isbn;
-        this.publicationDate = publicationDate;
+        this.title = title;
+        this.unitCost = unitCost;
         this.nbOfPages = nbOfPages;
-        this.imageURL = imageURL;
         this.language = language;
+        this.publicationDate = publicationDate;
+        this.imageURL = imageURL;
+        this.description = description;
     }
 
     // Getter and Setter

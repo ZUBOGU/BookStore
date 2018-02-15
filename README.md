@@ -45,7 +45,7 @@ Validating Data (Object Attributs and Method Parameter)
 
 Context and Denpendency Inject (CDI)
 
-Injecting bEANS
+Injecting Beans
 
 ## Test Strategy
 

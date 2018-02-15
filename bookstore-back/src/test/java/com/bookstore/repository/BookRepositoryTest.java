@@ -75,7 +75,7 @@ public class BookRepositoryTest {
     @InSequence(3)
     public void shouldCreateABook() {
         // Creates a book
-        Book book = new Book("a  title", "description", 12F, "isbn", new Date(),123, "imageURL", Language.ENGLISH);
+        Book book = new Book("isbn", "a   title", 12F, 123, Language.ENGLISH, new Date(), "imageURL", "description");
         book = bookRepository.create(book);
         // Checks the created book
         assertNotNull(book);
@@ -133,23 +133,20 @@ public class BookRepositoryTest {
     @Test(expected = Exception.class)
     @InSequence(9)
     public void shouldFailCreatingABookWithNullTitle() {
-        Book book = new Book(null, "description", 12F, "isbn", new Date(),123, "imageURL", Language.ENGLISH);
-        book =  bookRepository.create(book);
+        bookRepository.create(new Book("isbn", null, 12F, 123, Language.ENGLISH, new Date(), "imageURL", "description"));
     }
 
 
     @Test(expected = Exception.class)
     @InSequence(10)
     public void shouldFailCreatingABookWithLowUnitCostTitle() {
-        Book book = new Book("title", "description", 0F, "isbn", new Date(),123, "imageURL", Language.ENGLISH);
-        book =  bookRepository.create(book);
+        bookRepository.create(new Book("isbn", "title", 0F, 123, Language.ENGLISH, new Date(), "imageURL", "description"));
     }
     
     @InSequence(11)
     public void shouldFailCreatingABookWithNullISBN() {
-        Book book = new Book("title", "description", 12F, null, new Date(),123, "imageURL", Language.ENGLISH);
-        book = bookRepository.create(book);
-        assertTrue(book.getIsbn().startsWith("13-84356-"));
+        Book bookFound = bookRepository.create(new Book(null, "title", 12F, 123, Language.ENGLISH, new Date(), "imageURL", "description"));
+        assertTrue(bookFound.getIsbn().startsWith("13-84356-"));
     }
 
     @Test(expected = Exception.class)
