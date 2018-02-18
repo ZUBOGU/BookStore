@@ -47,6 +47,13 @@ Context and Denpendency Inject (CDI)
 
 Injecting Beans
 
+### Rest APIs documentattion
+External systems can comsume these APIS. Call it a contract.
+
+Open API provies a sstandard way to descrie REST services.
+
+OpenAPI Specification (OAS) and Swagger
+
 ## Test Strategy
 
 ### Unit Test
@@ -59,6 +66,6 @@ ShrinkWrap, testing the CRUD operations within wildFly
 run test with
 >mvn test
 
-### Clien Test
+### Client Test
 JAX-RS client API, access remotely, black box testing
 
