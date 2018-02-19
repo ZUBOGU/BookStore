@@ -1,5 +1,8 @@
 package com.bookstore.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -8,43 +11,53 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
+@ApiModel(description = "Book resource representation" )
 public class Book {
 
     // Attributes
     @Id
     @GeneratedValue
+    @ApiModelProperty("Identifier")
     private Long id;
 
     @Column(length = 200)
     @NotNull
     @Size(min = 1, max = 200)
+    @ApiModelProperty("Title of the book")
     private String title;
 
     @Column(length = 10000)
     @Size(min = 1, max = 10000)
+    @ApiModelProperty("Summary describing the book")
     private String description;
 
     @Column(name = "unit_cost")
     @Min(1)
+    @ApiModelProperty("Unit cost")
     private Float unitCost;
 
     @Column(length = 50)
     @NotNull
     @Size(min = 1, max = 50)
+    @ApiModelProperty("ISBN number")
     private String isbn;
 
     @Column(name = "publication_date")
     @Temporal(TemporalType.DATE)
     @Past
+    @ApiModelProperty("Date in which the book has been published")
     private Date publicationDate;
 
     @Column(name = "nb_of_pages")
+    @ApiModelProperty("Number of pages")
     private Integer nbOfPages;
 
     @Column(name = "image_url")
+    @ApiModelProperty("URL of the image cover")
     private String imageURL;
 
     @Enumerated
+    @ApiModelProperty( value = "Language in which the book has been written")
     private Language language;
 
     // Constructor
@@ -67,10 +80,6 @@ public class Book {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -79,20 +88,20 @@ public class Book {
         this.title = title;
     }
 
-    public String getDescirption() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescirption(String descirption) {
-        this.description = descirption;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Float getUnitCos() {
+    public Float getUnitCost() {
         return unitCost;
     }
 
-    public void setUnitCos(Float unitCos) {
-        this.unitCost = unitCos;
+    public void setUnitCost(Float unitCost) {
+        this.unitCost = unitCost;
     }
 
     public String getIsbn() {
@@ -119,12 +128,12 @@ public class Book {
         this.nbOfPages = nbOfPages;
     }
 
-    public String getImageUrl() {
+    public String getImageURL() {
         return imageURL;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageURL = imageUrl;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public Language getLanguage() {

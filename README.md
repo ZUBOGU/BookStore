@@ -27,7 +27,7 @@ Command to create maven javaee project.
 
 open project in intellij
 
-## Note for project
+## Note for back-end project
 
 Use Java Persistence API (JPA) to do Object Relational Mapping
 
@@ -41,18 +41,26 @@ Use EntityManager and JPQL to implement CURD Operation to database.
 
 Java Transaction API (JTA)
 
-Validating Data (Object Attributs and Method Parameter)
+Validating Data (Object Attributes and Method Parameter)
 
-Context and Denpendency Inject (CDI)
+Context and Dependency Inject (CDI)
 
 Injecting Beans
 
 ### Rest APIs documentattion
-External systems can comsume these APIS. Call it a contract.
+External systems can consume these APIS. Call it a contract.
 
-Open API provies a sstandard way to descrie REST services.
+Open API provides a standard way to descries REST services.
 
 OpenAPI Specification (OAS) and Swagger
+
+Get swagger.json on web browser. (We can show api with swagger-ui, not implemented)
+
+>http://localhost:8080/bookstore-back/swagger.json
+
+## Note for front-end project
+
+Install Node JS, Yarn, Angular CLI, Swagger code-gen
 
 ## Test Strategy
 
