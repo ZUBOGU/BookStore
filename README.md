@@ -47,7 +47,7 @@ Context and Dependency Inject (CDI)
 
 Injecting Beans
 
-### Rest APIs documentattion
+### Rest APIs documentation
 External systems can consume these APIS. Call it a contract.
 
 Open API provides a standard way to descries REST services.
@@ -60,7 +60,13 @@ Get swagger.json on web browser. (We can show api with swagger-ui, not implement
 
 ## Note for front-end project
 
-Install Node JS, Yarn, Angular CLI, Swagger code-gen
+Install Node JS, npm, Yarn, Angular CLI, Swagger code-gen and Check Version
+
+>node -v, npm -v, yarn -v, ng-v, swagger-codegen version
+
+### Bootstrapping an Angular Application
+
+> ng new bookstore-front --prefix bs --skip-tests --skip-e2e --inline-style --routing true
 
 ## Test Strategy
 
