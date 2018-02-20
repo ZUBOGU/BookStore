@@ -10,6 +10,8 @@ add user
 
 >./add_user.sh
 
+>http://localhost:8080
+
 ## Note for Set mvn
 > export PATH=~/apache-maven-3.5.2/bin:$PATH
 
@@ -66,7 +68,11 @@ Install Node JS, npm, Yarn, Angular CLI, Swagger code-gen and Check Version
 
 ### Bootstrapping an Angular Application
 
-> ng new bookstore-front --prefix bs --skip-tests --skip-e2e --inline-style --routing true
+>ng new bookstore-front --prefix bs --skip-tests true --skip-e2e true --inline-style true --routing true
+
+>yarn install
+
+>ng serve
 
 ## Test Strategy
 
