@@ -1,5 +1,5 @@
 # BookStore
-A distributed web application based on Java EE and Angular. Build REST API's with Java EE and consuming them with Angular.
+Turn a blank page into a web application! Develop a distributed web application based on two complementary technologies: Java EE and Angular. First, setup development environment, design domain model, map it to a relational database, bring transaction management, and then expose the business domain through a REST API. Along the way, make sure the integration tests always pass. Finally, once the REST API is tested, documented, and up-and-running, build an Angular front-end to interact with it through HTTP and JSon.
 
 ## Running the project
 Run wildFly service and upload .war file into development. You can retrieve REST API, i.e.
